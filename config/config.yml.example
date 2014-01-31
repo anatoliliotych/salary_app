@@ -1,0 +1,9 @@
+# This file is an example of config.yml.
+common: # common settings
+  url:   # url to salary.xls file
+  path: 'files/salary.xls' # path to salary.xls file (but can be changed :) )
+ldap: # ldap settings
+  domain: # domain name
+  host:   # ldap host
+  port:   # ldap port
+  base:   # ldap base

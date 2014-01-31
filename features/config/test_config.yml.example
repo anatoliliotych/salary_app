@@ -1,0 +1,7 @@
+# This file is an example of test_config.yml
+correct_ldap_user:
+  username: 'correct_username'
+  password: 'correct_password'
+invalid_ldap_user:
+  username: 'invalid_username'
+  password: 'invalid_password'
