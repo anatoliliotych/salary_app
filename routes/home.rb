@@ -1,5 +1,3 @@
-require_relative '../helpers'
-
 module Sinatra
   module App
     module Routing
