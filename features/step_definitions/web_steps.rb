@@ -211,14 +211,14 @@ Then /^the "([^\"]*)" field should exist$/ do |field|
   page.should have_field(field)
 end
 
-When /^I press "Sign In" with valid creds$/ do
+When /^I press "Sign in" with valid creds$/ do
   fill_in("username", :with => Config.correct_ldap_user.username)
   fill_in("password", :with => Config.correct_ldap_user.password)
-  click_button('Sign In')
+  click_button('Sign in')
 end
 
-When /^I press "Sign In" with invalid creds$/ do
+When /^I press "Sign in" with invalid creds$/ do
   fill_in("username", :with => Config.invalid_ldap_user.username)
   fill_in("password", :with => Config.invalid_ldap_user.password)
-  click_button('Sign In')
+  click_button('Sign in')
 end
