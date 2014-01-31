@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra/base'
 
-require_relative 'helpers'
+require_relative 'helpers/helpers'
 $LOAD_PATH.push File.expand_path('../routes', __FILE__)
 %w{ login home logout}.each { |file| require file }
 
