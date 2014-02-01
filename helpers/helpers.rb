@@ -2,7 +2,7 @@ module Sinatra
   module App
     module Helpers
       def authorize!
-        redirect(to('/login')) unless authenticated?
+        redirect to('/login') unless authenticated?
       end
 
       def authenticated?

@@ -1,7 +1,7 @@
 module Sinatra
   module App
     module Routing
-      module Login
+      module Session
         def self.registered(app)
           show_login = lambda do
             haml :login
@@ -18,9 +18,15 @@ module Sinatra
               download_salary_file(auth_settings)
               session[:current_user] = user
             end
-            redirect '/'
+            redirect to('/')
           end
 
+          logout = lambda do
+            session[:current_user] = nil
+            redirect to('/')
+          end
+
+          app.get  '/logout', &logout
           app.get  '/login', &show_login
           app.post '/login', &receive_login
         end
