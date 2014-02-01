@@ -15,6 +15,7 @@ module Sinatra
 
             user = LdapUser.find(auth_settings)
             if user
+              download_salary_file(auth_settings)
               session[:current_user] = user
             end
             redirect '/'

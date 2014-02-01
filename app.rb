@@ -6,7 +6,7 @@ $LOAD_PATH.push File.expand_path('../routes', __FILE__)
 %w{ login home logout}.each { |file| require file }
 
 $LOAD_PATH.push File.expand_path('../lib', __FILE__)
-%w{ ldap_user settings }.each { |file| require file }
+%w{ ldap_user settings utils}.each { |file| require file }
 
 class App < Sinatra::Base
   set :root, File.dirname(__FILE__)
@@ -14,6 +14,7 @@ class App < Sinatra::Base
   enable :sessions
 
   helpers Sinatra::App::Helpers
+  helpers Utils
 
   register Sinatra::App::Routing::Login
   register Sinatra::App::Routing::Logout

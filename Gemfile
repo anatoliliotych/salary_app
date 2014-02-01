@@ -4,6 +4,8 @@ gem 'sinatra'
 gem 'haml'
 gem 'net-ldap'
 gem 'shotgun'
+gem 'httpi'
+gem 'httpclient'
 
 group :test do
   gem "cucumber"
