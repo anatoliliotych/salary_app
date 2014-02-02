@@ -16,6 +16,7 @@ class Storage
   }
 
   attr_reader :periods
+
   def initialize
       file_path = Settings.common.path
       raise 'File salary.xls doesn\'t exist' unless file_path
@@ -74,6 +75,7 @@ class Storage
 
     1.upto(get_tab_row_count) do |line|
       name = get_cell_value(line, 2)
+      next unless name.is_a?(String)
       next if ['QA', 'C++', 'Flash/Actionscript', 'Graphic Design'].include?(name)
       if name
         users[name] = {}

@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'sinatra/base'
+require 'haml'
 
 require_relative 'helpers/helpers'
 $LOAD_PATH.push File.expand_path('../routes', __FILE__)

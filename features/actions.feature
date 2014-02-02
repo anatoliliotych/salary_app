@@ -20,3 +20,12 @@ Feature: User Actions
     Then I should be on the login page
     And I should see "Sign in"
 
+  Scenario: View user info
+    Given I am on the login page
+    And I press "Sign in" with valid creds
+    And I should be on the home page
+    And I select "December 2012" from "period"
+    And I press "Set"
+    And I select "Лётыч Анатолий" from "name"
+    When I press "Show"
+    Then I should see "Отчетный период: December 2012"

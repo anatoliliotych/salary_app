@@ -2,5 +2,10 @@
   .col-md-7{ style: 'padding: 9px 5px'}
     .panel.panel-default
       .panel-body
+        = haml :_user_info
   .col-md-5{ style: 'padding: 9px 5px'}
     = haml :_logout
+    - unless @periods.empty?
+      = haml :_period_selection
+    - if session[:period] && !@users.empty?
+      = haml :_user_selection

@@ -17,6 +17,7 @@ module Sinatra
             if user
               download_salary_file(auth_settings)
               session[:current_user] = user
+              session[:period]     = nil
             end
             redirect to('/')
           end

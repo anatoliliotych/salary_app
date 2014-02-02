@@ -1,0 +1,123 @@
+- if @selected_user
+  %h1
+    Отчетный период:
+    %span{ class: "label label-default" }
+      - period = session[:period].gsub('_', ' ')
+      #{ period }
+  %hr
+  %h3
+    %span{ class: "glyphicon glyphicon-user" }
+      #{ @selected_user[:name] }
+  %h4
+    %br
+    %span{ class: "glyphicon glyphicon-calendar" }
+    Дата начала работы:
+    #{ @selected_user[:start_date] }
+  %br
+  %h3
+    %span{ class: "label label-success" }
+      Отработано часов
+  %table{ class: "table table-condensed" }
+    %tr
+      %th="Итого"
+      %th="К оплате"
+      %th="Овертаймы"
+      %th="Премиальные"
+      %th="Штраф"
+    %tr
+      %td="#{ @selected_user[:total] }"
+      %td="#{ @selected_user[:pay] }"
+      %td="#{ @selected_user[:over] }"
+      %td="#{ @selected_user[:bonus] }"
+      %td="#{ @selected_user[:fine] }"
+  %p="Детализация"
+  %table{ class: "table table-condensed" }
+    %tr
+      %th='Com'
+      %th='Sup'
+      %th='Est'
+      %th='Int'
+      %th='Edu'
+      %th='Off'
+      %th='Sickness'
+      %th='Vacation'
+      %th='Unpaid vac-n'
+      %th='Holidays'
+    %tr
+      %td="#{ @selected_user[:com] }"
+      %td="#{ @selected_user[:sup] }"
+      %td="#{ @selected_user[:est] }"
+      %td="#{ @selected_user[:int] }"
+      %td="#{ @selected_user[:edu] }"
+      %td="#{ @selected_user[:off] }"
+      %td="#{ @selected_user[:sick] }"
+      %td="#{ @selected_user[:vac] }"
+      %td="#{ @selected_user[:unpaid] }"
+      %td="#{ @selected_user[:holidays] }"
+  %br
+  %h3
+    %span{ class: "label label-warning" }
+      Отпуск
+  %table{ class: "table table-condensed" }
+    %tr
+      %th="Часы за текущий год"
+      %th="Часы за предыдущие годы"
+      %th="Часы доступные на текущий месяц"
+    %tr
+      %td="#{ @selected_user[:vac_cur_year] }"
+      %td="#{ @selected_user[:vac_prev_year] }"
+      %td="#{ @selected_user[:vac_cur_month] }"
+  %br
+  %h3
+    %span{ class: "label label-info" }
+      Остаток оплачиваемых часов(100%) по болезни
+  %table{ class: "table table-condensed" }
+    %tr
+      %th='Год'
+      %th='Янв'
+      %th='Феб'
+      %th='Мар'
+      %th='Апр'
+      %th='Май'
+      %th='Июн'
+      %th='Июл'
+      %th='Авг'
+      %th='Сен'
+      %th='Окт'
+      %th='Ноя'
+      %th='Дек'
+    %tr
+      %td='Рабочий'
+      %td="#{ @selected_user[:jan_w] }"
+      %td="#{ @selected_user[:feb_w] }"
+      %td="#{ @selected_user[:mar_w] }"
+      %td="#{ @selected_user[:apr_w] }"
+      %td="#{ @selected_user[:may_w] }"
+      %td="#{ @selected_user[:jun_w] }"
+      %td="#{ @selected_user[:jul_w] }"
+      %td="#{ @selected_user[:aug_w] }"
+      %td="#{ @selected_user[:sep_w] }"
+      %td="#{ @selected_user[:oct_w] }"
+      %td="#{ @selected_user[:nov_w] }"
+      %td="#{ @selected_user[:dec_w] }"
+    %tr
+      %td='Календарный'
+      %td="#{ @selected_user[:jan_c] }"
+      %td="#{ @selected_user[:feb_c] }"
+      %td="#{ @selected_user[:mar_c] }"
+      %td="#{ @selected_user[:apr_c] }"
+      %td="#{ @selected_user[:may_c] }"
+      %td="#{ @selected_user[:jun_c] }"
+      %td="#{ @selected_user[:jul_c] }"
+      %td="#{ @selected_user[:aug_c] }"
+      %td="#{ @selected_user[:sep_c] }"
+      %td="#{ @selected_user[:oct_c] }"
+      %td="#{ @selected_user[:nov_c] }"
+      %td="#{ @selected_user[:dec_c] }"
+- else
+  .center{ align: 'center', style: 'padding: 9px 5px' }
+    %h2
+      %span{ class: "label label-danger" }
+        %span{ class: "glyphicon glyphicon-warning-sign" }
+        Выполните шаги 1 и 2.
+
