@@ -6,6 +6,7 @@ gem 'net-ldap'
 gem 'shotgun'
 gem 'httpi'
 gem 'httpclient'
+gem 'roo'
 
 group :test do
   gem "cucumber"
