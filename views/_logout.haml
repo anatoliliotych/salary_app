@@ -1,9 +1,9 @@
 .well{ align: 'center'}
   %form{ action: "/logout", method: "GET", enctype:'multipart/form-data' }
     %p
-      You are logged in as
+      Вы вошли под пользователем
       - username = session[:current_user].split('@').first.split('.').map!{ |e| e.capitalize! }.join(' ')
       %span{ style: "font-weight:bold" }
         #{ username }
       !
-      %button{ type: "submit", class: "btn btn-primary btn-xs" }='Sign out'
+      %button{ type: "submit", class: "btn btn-primary btn-xs" }='Выйти'
