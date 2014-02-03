@@ -8,18 +8,23 @@ module Sinatra
           end
 
           receive_login = lambda do
-            auth_settings = {
-              user: params[:username],
-              pass: params[:password]
-            }
+            begin
+              auth_settings = {
+                user: params[:username],
+                pass: params[:password]
+              }
 
-            user = LdapUser.find(auth_settings)
-            if user
-              download_salary_file(auth_settings)
-              session[:current_user] = user
-              session[:period]     = nil
+              user = LdapUser.find(auth_settings)
+              if user
+                download_salary_file(auth_settings)
+                session[:current_user] = user
+                session[:period]     = nil
+              end
+              redirect to('/')
+            rescue
+              flash[:error] = 'Что-то пошло не так! Попробуйте снова!'
+              redirect back
             end
-            redirect to('/')
           end
 
           logout = lambda do

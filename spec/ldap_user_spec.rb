@@ -44,11 +44,9 @@ describe LdapUser do
       @ldap = double
     end
 
-    it 'fails and return nil' do
-      expect(LdapUser.find({
-        user: 'name',
-        pass: 'pass'
-      })).to be_nil
+    it 'raises an exception' do
+      -> (){ LdapUser.find({ user: 'name', pass: 'pass' }) }.
+        should raise_error "NET::LDAP connection has failed."
     end
   end
 

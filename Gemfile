@@ -7,6 +7,7 @@ gem 'shotgun'
 gem 'httpi'
 gem 'httpclient'
 gem 'roo'
+gem 'sinatra-flash'
 
 group :test do
   gem "cucumber"

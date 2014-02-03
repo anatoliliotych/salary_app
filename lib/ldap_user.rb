@@ -24,7 +24,7 @@ class LdapUser
       first_result[:mail].first if first_result
     rescue => ex
       puts "NET::LDAP connection has failed with message: #{ex.message}"
-      return nil
+      raise "NET::LDAP connection has failed."
   end
 
   def self.ldap_settings

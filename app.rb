@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/base'
 require 'haml'
+require 'sinatra/flash'
 
 require_relative 'helpers/helpers'
 $LOAD_PATH.push File.expand_path('../routes', __FILE__)
@@ -17,6 +18,7 @@ class App < Sinatra::Base
   helpers Sinatra::App::Helpers
   helpers Utils
 
+  register Sinatra::Flash
   register Sinatra::App::Routing::Session
   register Sinatra::App::Routing::Home
 end
