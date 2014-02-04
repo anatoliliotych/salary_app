@@ -37,7 +37,7 @@ describe Storage do
     end
 
     it 'should return proper list of periods' do
-      expect(@storage.get_periods).to be_eql ['November 13', 'December 13']
+      expect(@storage.get_periods).to be_eql ['November 13', 'December 13'].reverse
     end
   end
 

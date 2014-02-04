@@ -33,6 +33,7 @@ class Storage
   def get_periods
     sheets = @doc.sheets.dup - ['Employees']
     sheets.map! { |e| e.gsub('_', ' ') }
+    sheets.reverse
   end
 
   def get_data
