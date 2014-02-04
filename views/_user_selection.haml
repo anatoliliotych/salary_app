@@ -1,7 +1,7 @@
 .panel.panel-default
   .panel-heading
     %h3
-      2. Выберите cотрудника.
+      2. Выберите cотрудника:
   .panel-body
     %form{ action: "/user", method: "POST" }
       .container
@@ -12,5 +12,5 @@
                 - selected = @selected_user && @selected_user[:name] == name
                 %option{value: "#{URI.encode(name)}", selected: selected }=name
           .col-md-3
-            %button{ type: "submit", class: 'btn btn-primary btn-xs'}='Показать'
+            %button{ type: "submit", class: 'btn btn-primary btn-xs', style: "width: 76px;" }='Показать'
 
