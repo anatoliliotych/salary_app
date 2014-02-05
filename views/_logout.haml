@@ -4,7 +4,9 @@
     .container
       .row
         .col-md-3
-          %p
-            Вы вошли под пользователем #{ username }!
+          %p{style: "margin-left: -15;" }
+            Вы вошли под пользователем 
+          %p{style: "margin-left: -15; margin-top: -10;" }
+            #{ username }!
         .col-md-3
           %button{ type: "submit", class: "btn btn-primary btn-xs", style: "width: 76px;"}='Выйти'
