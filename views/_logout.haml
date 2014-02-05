@@ -1,5 +1,5 @@
 .well{ style: "height: 76px;" }
-  - username = session[:current_user].split('@').first.split('.').map!{ |e| e.capitalize! }.join(' ')
+  - username = session[:current_user]
   %form{ action: "/logout", method: "GET", enctype:'multipart/form-data' }
     .container
       .row

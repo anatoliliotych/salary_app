@@ -18,10 +18,7 @@ class Storage
   attr_reader :periods
 
   def initialize
-      file_path = Settings.common.path
-      raise 'File salary.xls doesn\'t exist' unless file_path
-
-      @doc = Roo::Excel.new(file_path)
+      @doc = self.class.init_doc
       raise 'Strange salary.xls.' unless @doc.sheets.first == 'Employees'
       @periods = get_periods
       @data = get_data
@@ -89,5 +86,21 @@ class Storage
       end
     end
     users
+  end
+  class << self
+    def init_doc
+      file_path = Settings.common.path
+      raise 'File salary.xls doesn\'t exist' unless file_path
+      Roo::Excel.new(file_path)
+    end
+
+    def get_russian_name(name)
+      doc = init_doc
+      doc.default_sheet = "Employees"
+      6.upto(doc.last_row) do |line|
+        e_name = doc.cell(line, 3)
+        return doc.cell(line, 2) if e_name == name
+      end
+    end
   end
 end

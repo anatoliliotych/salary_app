@@ -27,6 +27,7 @@ GEM
     httpi (2.1.0)
       rack
       rubyntlm (~> 0.3.2)
+    i18n (0.6.9)
     mime-types (2.1)
     mini_portile (0.5.2)
     multi_json (1.8.4)
@@ -62,7 +63,8 @@ GEM
       tilt (~> 1.3, >= 1.3.4)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
-    spreadsheet (0.9.6)
+    sinatra-i18n (0.1.0)
+    spreadsheet (0.9.7)
       ruby-ole (>= 1.0)
     templater (1.0.0)
       diff-lcs (>= 1.1.2)
@@ -82,6 +84,7 @@ DEPENDENCIES
   haml
   httpclient
   httpi
+  i18n
   net-ldap
   roo
   rspec
@@ -89,3 +92,5 @@ DEPENDENCIES
   shotgun
   sinatra
   sinatra-flash
+  sinatra-i18n
+  spreadsheet (~> 0.9.7)

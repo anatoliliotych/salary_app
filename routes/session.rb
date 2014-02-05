@@ -17,11 +17,12 @@ module Sinatra
               user = LdapUser.find(auth_settings)
               if user
                 download_salary_file(auth_settings)
-                session[:current_user] = user
+                session[:current_user] = Storage.get_russian_name(user)
                 session[:period]     = nil
               end
               redirect to('/')
-            rescue
+            rescue => ex
+              puts ex.message
               flash[:error] = 'Что-то пошло не так! Попробуйте снова!'
               redirect back
             end
@@ -29,6 +30,8 @@ module Sinatra
 
           logout = lambda do
             session[:current_user] = nil
+            session[:name] = nil
+            session[:period] = nil
             redirect to('/')
           end
 

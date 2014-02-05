@@ -9,6 +9,8 @@ module Sinatra
             authorize!
             @@storage      ||= Storage.new
             @periods       = @@storage.periods
+            session[:period] ||= @periods.first
+            session[:name] ||= session[:current_user]
             @users         = @@storage.users_by_period(session[:period])
             @selected_user = @@storage.user_info(name:   session[:name],
                                                  period: session[:period])

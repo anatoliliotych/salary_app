@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/base'
 require 'haml'
 require 'sinatra/flash'
+require 'sinatra/i18n'
 
 require_relative 'helpers/helpers'
 $LOAD_PATH.push File.expand_path('../routes', __FILE__)
@@ -12,12 +13,14 @@ $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 class App < Sinatra::Base
   set :root, File.dirname(__FILE__)
+  set :locales, File.join(File.dirname(__FILE__), 'config/en.yml')
 
   enable :sessions
 
   helpers Sinatra::App::Helpers
   helpers Utils
 
+  register Sinatra::I18n
   register Sinatra::Flash
   register Sinatra::App::Routing::Session
   register Sinatra::App::Routing::Home

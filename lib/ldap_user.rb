@@ -21,7 +21,7 @@ class LdapUser
       filter &= Net::LDAP::Filter.eq('mailnickname', @username)
       results = @ldap_connection.search(filter: filter)
       first_result = results.first if results
-      first_result[:mail].first if first_result
+      first_result[:displayname].first if first_result
     rescue => ex
       puts "NET::LDAP connection has failed with message: #{ex.message}"
       raise "NET::LDAP connection has failed."
