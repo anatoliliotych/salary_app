@@ -81,8 +81,8 @@ class Storage
         username[:name] = name
         username[:start_date] = get_cell_value(line, 3)
 
-        WORKING_HOURS.each { |k, v| username[k] = get_cell_value(line, v) || 0 }
-        ILNESSES.each { |k, v| username[k] = get_cell_value(line, v) }
+        WORKING_HOURS.each { |k, v| username[k] = get_cell_value(line, v).to_i || 0 }
+        ILNESSES.each { |k, v| username[k] = get_cell_value(line, v).to_i }
       end
     end
     users
