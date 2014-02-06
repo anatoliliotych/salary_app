@@ -2,6 +2,16 @@ require 'net/ldap'
 
 class LdapUser
   def self.find(opts)
+    ldap_connection = ldap_connect(opts)
+    filter = Net::LDAP::Filter.pres('objectclass')
+    filter &= Net::LDAP::Filter.eq('mailnickname', opts[:user])
+    results = ldap_connection.search(filter: filter)
+    first_result = results.first if results
+    puts first_result[:thumbnailphoto].first.inspect
+    first_result[:displayname].first if first_result
+  end
+
+  def self.ldap_connect(opts)
       @username = opts[:user]
       @password = opts[:pass]
       return nil unless @username && @password
@@ -15,13 +25,7 @@ class LdapUser
       }
 
       connection_settings = ldap_settings.merge!(auth_params)
-      @ldap_connection = Net::LDAP.new connection_settings
-
-      filter = Net::LDAP::Filter.pres('objectclass')
-      filter &= Net::LDAP::Filter.eq('mailnickname', @username)
-      results = @ldap_connection.search(filter: filter)
-      first_result = results.first if results
-      first_result[:displayname].first if first_result
+      Net::LDAP.new connection_settings
     rescue => ex
       puts "NET::LDAP connection has failed with message: #{ex.message}"
       raise "NET::LDAP connection has failed."
