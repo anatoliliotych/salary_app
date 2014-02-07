@@ -15,6 +15,7 @@ module Sinatra
               }
 
               user = LdapUser.find(auth_settings)
+              raise "Ldap user not found." unless user
               if user
                 download_salary_file(auth_settings)
                 session[:current_user] = Storage.get_russian_name(user)
@@ -23,6 +24,7 @@ module Sinatra
               redirect to('/')
             rescue => ex
               puts ex.message
+              puts ex.backtrace
               flash[:error] = 'Что-то пошло не так! Попробуйте снова!'
               redirect back
             end

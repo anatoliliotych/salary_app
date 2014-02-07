@@ -7,7 +7,6 @@ class LdapUser
     filter &= Net::LDAP::Filter.eq('mailnickname', opts[:user])
     results = ldap_connection.search(filter: filter)
     first_result = results.first if results
-    puts first_result[:thumbnailphoto].first.inspect
     first_result[:displayname].first if first_result
   end
 
