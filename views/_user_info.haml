@@ -2,7 +2,7 @@
   %h1{ style: "margin-top: 10px" }
     Отчетный период:
     %span{ class: "label label-info" }
-      - period = session[:period].gsub('_', ' ')
+      - period = translate_period(session[:period])
       #{ period }
   %hr
   %h3
