@@ -25,6 +25,7 @@ module Sinatra
             rescue => ex
               puts ex.message
               puts ex.backtrace
+              session[:user_login] = auth_settings[:user]
               flash[:error] = 'Что-то пошло не так! Попробуйте снова!'
               redirect back
             end
