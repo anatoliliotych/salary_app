@@ -122,17 +122,17 @@ describe Storage do
       res = { "anatoli" => {
         :name=>"anatoli",
         :start_date=>"1/1/1900",
-        :com=>"1", :sup=>"1", :est=>"1", :int=>"1", :edu=>"1",
-        :off=>"1", :sick=>"1", :vac=>"1", :unpaid=>"1",
-        :holidays=>"1", :total=>"1", :pay=>"1", :over=>"1",
-        :bonus=>"1", :fine=>"1", :vac_cur_year=>"1",
-        :vac_prev_year=>"1", :vac_cur_month=>"1", :jan_w=>"1",
-        :jan_c=>"1", :feb_w=>"1", :feb_c=>"1", :mar_w=>"1",
-        :mar_c=>"1", :apr_w=>"1", :apr_c=>"1", :may_w=>"1",
-        :may_c=>"1", :jun_w=>"1", :jun_c=>"1", :jul_w=>"1",
-        :jul_c=>"1", :aug_w=>"1", :aug_c=>"1", :sep_w=>"1",
-        :sep_c=>"1", :oct_w=>"1", :oct_c=>"1", :nov_w=>"1",
-        :nov_c=>"1", :dec_w=>"1", :dec_c=>"1"
+        :com=>1, :sup=>1, :est=>1, :int=>1, :edu=>1,
+        :off=>1, :sick=>1, :vac=>1, :unpaid=>1,
+        :holidays=>1, :total=>1, :pay=>1, :over=>1,
+        :bonus=>1, :fine=>1, :vac_cur_year=>1,
+        :vac_prev_year=>1, :vac_cur_month=>1, :jan_w=>1,
+        :jan_c=>1, :feb_w=>1, :feb_c=>1, :mar_w=>1,
+        :mar_c=>1, :apr_w=>1, :apr_c=>1, :may_w=>1,
+        :may_c=>1, :jun_w=>1, :jun_c=>1, :jul_w=>1,
+        :jul_c=>1, :aug_w=>1, :aug_c=>1, :sep_w=>1,
+        :sep_c=>1, :oct_w=>1, :oct_c=>1, :nov_w=>1,
+        :nov_c=>1, :dec_w=>1, :dec_c=>1
       }}
       expect(@storage.process_period_tab('November 13')).to be_eql res
     end

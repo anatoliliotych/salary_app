@@ -54,14 +54,14 @@ describe LdapUser do
     before(:each) do
       @ldap = double
       allow(Net::LDAP).to receive(:new) { @ldap }
-      allow(@ldap).to receive(:search) { [mail: ['name@foo.com']] }
+      allow(@ldap).to receive(:search) { [displayname: ['name']] }
     end
 
-    it 'should return valid user mail' do
+    it 'should return valid user name' do
       expect(LdapUser.find({
         user: 'name',
         pass: 'pass'
-      })).to be_eql 'name@foo.com'
+      })).to be_eql 'name'
     end
   end
 end

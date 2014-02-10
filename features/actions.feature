@@ -4,6 +4,7 @@ Feature: User Actions
     Given I am on the login page
     When I press "Войти" with valid creds
     Then I should be on the home page
+    And I should see "Отчетный период:"
     And I should see "Выйти"
 
   Scenario: Login with invalid creds
@@ -24,8 +25,8 @@ Feature: User Actions
     Given I am on the login page
     And I press "Войти" with valid creds
     And I should be on the home page
-    And I select "December 2012" from "period"
+    And I select "Декабрь 2012" from "period"
     And I press "Установить"
     And I select "Лётыч Анатолий" from "name"
     When I press "Показать"
-    Then I should see "Отчетный период: December 2012"
+    Then I should see "Отчетный период: Декабрь 2012"
