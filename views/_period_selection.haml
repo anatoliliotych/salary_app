@@ -7,7 +7,7 @@
       .container
         .row
           .col-md-3
-            %select{ name: "period"}
+            %select.chosen-select-deselect#periods{ name: "period", style: 'width: 200px'}
               - @periods.each do |period|
                 - selected = session[:period] == period
                 %option{value: "#{period}", selected: selected }=translate_period(period)
