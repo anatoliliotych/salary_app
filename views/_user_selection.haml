@@ -7,7 +7,7 @@
       .container
         .row
           .col-md-3
-            %select{ name: "name"}
+            %select.chosen-select-deselect#users{ style: 'width: 200px', name: "name", "data-placeholder" => "Выберите сотрудника"}
               - @users.keys.sort.each do |name|
                 - selected = @selected_user && @selected_user[:name] == name
                 %option{value: "#{URI.encode(name)}", selected: selected }=name
