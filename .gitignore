@@ -1,3 +1,7 @@
 config/config.yml
 features/config/test_config.yml
 files/salary.xls
+config/deploy/production.rb config/deploy/staging.rb
+config/deploy/production.rb config/deploy/staging.rb
+config/deploy/production.rb
+config/deploy/staging.rb

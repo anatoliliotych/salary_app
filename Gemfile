@@ -11,8 +11,10 @@ gem 'sinatra-flash'
 gem "spreadsheet", "~> 0.9.7"
 gem "sinatra-i18n"
 gem "i18n"
+gem 'unicorn'
 
 group :test do
+  gem 'capistrano'
   gem "cucumber"
   gem "cucumber-sinatra"
   gem "capybara"
