@@ -15,7 +15,8 @@ class App < Sinatra::Base
   set :root, File.dirname(__FILE__)
   set :locales, File.join(File.dirname(__FILE__), 'config/en.yml')
 
-  enable :sessions
+  use Rack::Session::Cookie, :key => 'rack.session',
+                           :path => '/'
 
   helpers Sinatra::App::Helpers
   helpers Utils
