@@ -35,6 +35,8 @@ module Sinatra
             session[:current_user] = nil
             session[:name] = nil
             session[:period] = nil
+            session.clear
+            @@storage = nil
             redirect to('/')
           end
 
