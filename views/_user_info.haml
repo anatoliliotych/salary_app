@@ -63,7 +63,8 @@
       %th="Часы за текущий год"
       %th="Часы за предыдущие годы"
       %th="Часы доступные на текущий месяц"
-    %tr
+    - color = "yellow" if highlight_vac(@selected_user[:start_date],  @selected_user[:vac_cur_year])
+    %tr{ bgcolor: color}
       %td="#{ @selected_user[:vac_cur_year] }"
       %td="#{ @selected_user[:vac_prev_year] }"
       %td="#{ @selected_user[:vac_cur_month] }"
