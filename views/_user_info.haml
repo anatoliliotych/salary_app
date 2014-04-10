@@ -1,23 +1,23 @@
 - if @selected_user
   %h1{ style: "margin-top: 10px" }
     Отчетный период:
-    %span{ class: "label label-info" }
+    %span.label.label-info
       - period = translate_period(session[:period])
       #{ period }
   %hr
   %h3
-    %span{ class: "glyphicon glyphicon-user" }
+    %span.glyphicon.glyphicon-user
       #{ @selected_user[:name] }
   %h4
     %br
-    %span{ class: "glyphicon glyphicon-calendar" }
+    %span.glyphicon.glyphicon-calendar
     Дата начала работы:
     #{ @selected_user[:start_date] }
   %br
   %h3
-    %span{ class: "label label-info" }
+    %span.label.label-info
       Отработано часов
-  %table{ class: "table table-condensed" }
+  %table.table.table-condensed
     %tr
       %th="Итого"
       %th="К оплате"
@@ -31,7 +31,7 @@
       %td="#{ @selected_user[:bonus] }"
       %td="#{ @selected_user[:fine] }"
   %p="Детализация"
-  %table{ class: "table table-condensed" }
+  %table.table.table-condensed
     %tr
       %th='Com'
       %th='Sup'
@@ -56,23 +56,23 @@
       %td="#{ @selected_user[:holidays] }"
   %br
   %h3
-    %span{ class: "label label-info" }
+    %span.label.label-info
       Отпуск
-  %table{ class: "table table-condensed" }
+  %table.table.table-condensed
     %tr
       %th="Часы за текущий год"
       %th="Часы за предыдущие годы"
       %th="Часы доступные на текущий месяц"
-    - color = "yellow" if highlight_vac(@selected_user[:start_date],  @selected_user[:vac_cur_year])
+    - color = "#F7F7A0" if highlight_vac(@selected_user[:start_date],  @selected_user[:vac_cur_year])
     %tr{ bgcolor: color}
       %td="#{ @selected_user[:vac_cur_year] }"
       %td="#{ @selected_user[:vac_prev_year] }"
       %td="#{ @selected_user[:vac_cur_month] }"
   %br
   %h3
-    %span{ class: "label label-info" }
+    %span.label.label-info
       Остаток оплачиваемых часов(100%) по болезни
-  %table{ class: "table table-condensed" }
+  %table.table.table-condensed
     %tr
       %th='Год'
       %th='Янв'
@@ -118,7 +118,7 @@
 - else
   .center{ align: 'center', style: "margin-top: -10;"}
     %h2
-      %span{ class: "label label-success"}
-        %span{ class: "glyphicon glyphicon-warning-sign" }
+      %span.label.label-success
+        %span.glyphicon.glyphicon-warning-sign
         Выполните шаги 1 и 2
 

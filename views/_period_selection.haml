@@ -7,11 +7,11 @@
       .container
         .row
           .col-md-3
-            %select.chosen-select-deselect#periods{ name: "period", style: 'width: 200px'}
+            %select.chosen-select-deselect.width-250#periods{ name: "period" }
               - @periods.each do |period|
                 - selected = session[:period] == period
                 %option{value: "#{period}", selected: selected }=translate_period(period)
-          .col-md-3
-            %button{ type: "submit", class: 'btn btn-primary btn-xs', style: "width: 76px;" }='Установить'
+          .col-md-3.padding-l0
+            %button.btn.btn-primary.width-100{ type: "submit" }='Установить'
 
 

@@ -7,10 +7,10 @@
       .container
         .row
           .col-md-3
-            %select.chosen-select-deselect#users{ style: 'width: 200px', name: "name", "data-placeholder" => "Выберите сотрудника"}
+            %select.chosen-select-deselect.width-250#users{ name: "name", "data-placeholder" => "Выберите сотрудника"}
               - @users.keys.sort.each do |name|
                 - selected = @selected_user && @selected_user[:name] == name
                 %option{value: "#{URI.encode(name)}", selected: selected }=name
-          .col-md-3
-            %button{ type: "submit", class: 'btn btn-primary btn-xs', style: "width: 76px;" }='Показать'
+          .col-md-3.padding-l0
+            %button.btn.btn-primary.width-100{ type: "submit" }='Показать'
 

@@ -1,9 +1,9 @@
 .row
-  .col-md-7{ style: 'padding: 9px 5px'}
-    .panel.panel-default{ style: "height: 76px;" }
-      .panel-body{ style: "margin-top: -10;" }
+  .col-md-7.padding-9-5
+    .panel.panel-default.height-76
+      .panel-body.margin-tm10
         = haml :_user_info
-  .col-md-5{ style: 'padding: 9px 5px'}
+  .col-md-5.padding-9-5
     = haml :_logout
     - unless @periods.empty?
       = haml :_period_selection

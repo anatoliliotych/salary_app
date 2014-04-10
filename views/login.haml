@@ -1,11 +1,11 @@
 .row
-  .col-md-4.col-md-offset-4{ style: "padding-top: 250px; width: 400px" }
+  .col-md-4.col-md-offset-4.login-form
     - unless flash.empty?
       %p
-        %span{ class: "label label-danger" }
+        %span.label.label-danger
           #{ flash[:error] }
-    %form{ class: "form-signin", role: "form", action: "/login", method: "POST" }
-      %input{ type: "text", name: "username", class: "form-control", placeholder: "Логин", style: "border-bottom-left-radius: 0; border-bottom-right-radius: 0", value: "#{session[:user_login]}"}
-      %input{ type: "password", name: "password", class: "form-control", placeholder: "Пароль", style: "border-top-left-radius: 0; border-top-right-radius: 0" }
+    %form.form-signin{ role: "form", action: "/login", method: "POST" }
+      %input.form-control.login-bottom-radiuses{ type: "text", name: "username", placeholder: "Логин", value: "#{session[:user_login]}"}
+      %input.form-control.login-top-radiuses{ type: "password", name: "password", placeholder: "Пароль" }
       %p
-        %button{ type: "submit", class: "btn btn-lg btn-primary btn-block", style: "margin-top: 20px;" }='Войти'
+        %button.btn.btn-lg.btn-primary.btn-block.margin-t20{ type: "submit" }='Войти'
