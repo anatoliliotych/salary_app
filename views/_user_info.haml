@@ -63,11 +63,16 @@
       %th="Часы за текущий год"
       %th="Часы за предыдущие годы"
       %th="Часы доступные на текущий месяц"
-    - color = "#F7F7A0" if highlight_vac(@selected_user[:start_date],  @selected_user[:vac_cur_year])
+    - vac_is_close = highlight_vac(@selected_user[:start_date],  @selected_user[:vac_cur_year])
+    - color = "#F7F7A0" if vac_is_close
     %tr{ bgcolor: color}
       %td="#{ @selected_user[:vac_cur_year] }"
       %td="#{ @selected_user[:vac_prev_year] }"
       %td="#{ @selected_user[:vac_cur_month] }"
+  - if vac_is_close
+    %span.label.label-warning
+      В ближаейшее время остаток рабочих часов отпуска за текущий рабочий год может сгореть до 64 часов.
+
   %br
   %h3
     %span.label.label-info
