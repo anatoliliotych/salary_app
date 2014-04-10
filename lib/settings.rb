@@ -15,5 +15,9 @@ module Settings
   def ldap
     OpenStruct.new(config['ldap'])
   end
+
+  def smtp
+    OpenStruct.new(config['smtp'])
+  end
 end
 

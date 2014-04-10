@@ -1,0 +1,66 @@
+.margin-l15 {
+  margin-left: 15px;
+}
+
+.auto-width {
+  width: auto;
+}
+
+.width-100 {
+  width: 100px;
+}
+
+.width-250{
+  width: 250px;
+}
+
+.height-76 {
+  height: 76px;
+}
+
+.margin-l5 {
+  margin-left: 5px;
+}
+
+.margin-lm15 {
+  margin-left: -15;
+}
+
+.margin-t20 {
+margin-top: 20px;
+}
+
+.margin-tm10 {
+  margin-top: -10;
+}
+
+.padding-10 {
+  padding: 10;
+}
+
+.padding-l0 {
+  padding-left: 0px;
+}
+
+.padding-9-5 {
+  padding: 9px 5px;
+}
+
+.padding-l0{
+  padding-left: 0px;
+}
+
+.login-form {
+  padding-top: 250px; 
+  width: 400px";
+}
+
+.login-bottom-radiuses {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.login-top-radiuses {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

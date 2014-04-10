@@ -2,8 +2,16 @@
 common: # common settings
   url:   # url to salary.xls file
   path: 'files/salary.xls' # path to salary.xls file (but can be changed :) )
+  to: # complain email will be sent to this email
+  subj: # subj of complain email
 ldap: # ldap settings
   domain: # domain name
   host:   # ldap host
   port:   # ldap port
   base:   # ldap base
+smtp:
+  address:  # smtp address
+  port:     # smtp port
+  domain:    # domain
+  authentication:       # auth type
+  enable_starttls_auto: # true/false

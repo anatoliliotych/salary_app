@@ -18,6 +18,7 @@ module Sinatra
               raise "Ldap user not found." unless user
               if user
                 download_salary_file(auth_settings)
+                session[:user] = auth_settings[:user]
                 session[:current_user] = Storage.get_russian_name(user)
                 session[:period]     = nil
               end
@@ -33,6 +34,7 @@ module Sinatra
 
           logout = lambda do
             session[:current_user] = nil
+            session[:user] = nil
             session[:name] = nil
             session[:period] = nil
             session.clear

@@ -12,6 +12,7 @@ gem "spreadsheet", "~> 0.9.7"
 gem "sinatra-i18n"
 gem "i18n"
 gem 'unicorn'
+gem 'pony'
 
 group :test do
   gem 'capistrano'

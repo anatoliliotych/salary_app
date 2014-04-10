@@ -27,9 +27,31 @@ module Sinatra
             redirect to('/')
           end
 
+          send_complain = lambda do
+            smtp_options = Settings.smtp.marshal_dump
+
+            smtp_options.merge!(
+              :password => params[:pass],
+              :user_name => session[:user])
+
+            Pony.options = { :to => Settings.common.to, :via => :smtp, :via_options => smtp_options }
+            user_mail = "#{session[:user]}@#{Settings.smtp.domain}"
+            begin
+              Pony.mail(
+                :from => user_mail,
+                :cc => user_mail,
+                :body => params[:body],
+                :subject => Settings.common.subj)
+            rescue => ex
+              puts ex.message
+              halt 503
+            end
+          end
+
           app.get  '/', &show_home
           app.post '/user', &select_user
           app.post '/period', &select_period
+          app.post '/complain', &send_complain
         end
       end
     end
