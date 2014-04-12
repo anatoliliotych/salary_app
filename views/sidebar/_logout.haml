@@ -1,0 +1,12 @@
+.row-fluid
+  .well.height-76
+    - username = session[:current_user]
+    %form{ action: "/logout", method: "GET", enctype:'multipart/form-data' }
+      .row-fluid
+        .col-xs-8
+          %p
+            Вы вошли под пользователем 
+          %p.margin-tm10
+            #{ username }!
+        .col-xs-4.button-pos
+          %button.btn.btn-primary.width-100{ type: "submit"}='Выйти'

@@ -1,0 +1,42 @@
+%h3
+  %span.label.label-info.small-label
+    Отработано часов
+%table.table.table-condensed
+  %tr
+    %th="Итого"
+    %th="К оплате"
+    %th="Овертаймы"
+    %th="В отпуске"
+    %th="Штраф"
+  %tr
+    %td="#{ @selected_user[:total] }"
+    %td="#{ @selected_user[:pay] }"
+    %td="#{ @selected_user[:over] }"
+    %td="#{ @selected_user[:bonus] }"
+    %td="#{ @selected_user[:fine] }"
+%p="Детализация"
+.table-responsive
+  %table.table.table-condensed.small-table
+    %tr
+      %th='Com'
+      %th='Sup'
+      %th='Est'
+      %th='Int'
+      %th='Edu'
+      %th='Off'
+      %th='Sickness'
+      %th='Vacation'
+      %th='Unpaid vac-n'
+      %th='Holidays'
+    %tr
+      %td="#{ @selected_user[:com] }"
+      %td="#{ @selected_user[:sup] }"
+      %td="#{ @selected_user[:est] }"
+      %td="#{ @selected_user[:int] }"
+      %td="#{ @selected_user[:edu] }"
+      %td="#{ @selected_user[:off] }"
+      %td="#{ @selected_user[:sick] }"
+      %td="#{ @selected_user[:vac] }"
+      %td="#{ @selected_user[:unpaid] }"
+      %td="#{ @selected_user[:holidays] }"
+

@@ -1,0 +1,17 @@
+.panel.panel-default#complain_block
+  .panel-heading#complain
+    %h4
+      %span.glyphicon.glyphicon-envelope
+      Сообщить о неточности
+  .panel-body#complain_form
+    .row-fluid#messages
+    .row-fluid
+      .col-xs-10.margin-l5.padding-10
+        %h5
+          Получатель: #{Settings.common.to}
+        %textarea.form-control.fullwidth#body{rows: "5", placeholder: "Неточность в salary.xls:" }
+    .row-fluid
+      .col-xs-8
+        %input.form-control#password{ placeholder:"Пароль от почты", type: "password"}
+      .col-xs-4.button-pos
+        %button.btn.btn-primary.width-100#complain_button='Отправить'

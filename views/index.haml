@@ -1,12 +1,24 @@
-.row
-  .col-md-7.padding-9-5
-    .panel.panel-default.height-76
-      .panel-body.margin-tm10
-        = haml :_user_info
-  .col-md-5.padding-9-5
-    = haml :_logout
-    - unless @periods.empty?
-      = haml :_period_selection
-    - if session[:period] && !@users.empty?
-      = haml :_user_selection
-    = haml :_complain
+.col-md-7.padding-9-5
+  .panel.panel-default.height-76
+    .panel-body.margin-tm10
+      - if @selected_user
+        .margin-b30
+          = haml :'user_info/_user_info_head'
+        .margin-b30
+          = haml :'user_info/_user_info_hours'
+        .margin-b30
+          = haml :'user_info/_user_info_vac'
+        = haml :'user_info/_user_info_ill'
+      - else
+        .center.margin-tm10{ align: 'center'}
+          %h2
+            %span.label.label-success
+              %span.glyphicon.glyphicon-warning-sign
+              Выполните шаги 1 и 2
+.col-md-5.padding-9-5
+  = haml :'sidebar/_logout'
+  - unless @periods.empty?
+    = haml :'sidebar/_period_selection'
+  - if session[:period] && !@users.empty?
+    = haml :'sidebar/_user_selection'
+  = haml :'sidebar/_complain'

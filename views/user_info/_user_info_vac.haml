@@ -1,0 +1,18 @@
+%h3
+  %span.label.label-info.small-label
+    Отпуск
+%table.table.table-condensed
+  %tr
+    %th="За текущий год"
+    %th="За предыдущие годы"
+    %th="Доступные на текущий месяц"
+  - vac_is_close = highlight_vac(@selected_user[:start_date],  @selected_user[:vac_cur_year])
+  - color = "#F7F7A0" if vac_is_close
+  %tr{ bgcolor: color}
+    %td="#{ @selected_user[:vac_cur_year] }"
+    %td="#{ @selected_user[:vac_prev_year] }"
+    %td="#{ @selected_user[:vac_cur_month] }"
+- if vac_is_close
+  %div
+    %span
+      В ближайшее время остаток рабочих часов отпуска может сгореть до 64 часов

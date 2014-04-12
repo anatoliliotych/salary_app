@@ -1,0 +1,15 @@
+%h1.margin-t10
+  Отчетный период:
+  %span.label.label-info
+    - period = translate_period(session[:period])
+    #{ period }
+%hr
+%div.no-wrap
+  %h3
+    %span.glyphicon.glyphicon-user
+      #{ @selected_user[:name] }
+  %h4
+    %br
+    %span.glyphicon.glyphicon-calendar
+    Дата начала работы:
+    #{ @selected_user[:start_date] }

@@ -1,0 +1,14 @@
+.panel.panel-default
+  .panel-heading
+    %h3
+      1. Выберите период:
+  .panel-body
+    %form{ action: "/period", method: "POST" }
+      .row-fluid
+        .col-xs-8
+          %select.chosen-select-deselect#periods{ name: "period" }
+            - @periods.each do |period|
+              - selected = session[:period] == period
+              %option{value: "#{period}", selected: selected }=translate_period(period)
+        .col-xs-4.button-pos
+          %button.btn.btn-primary.width-100{ type: "submit" }='Установить'
