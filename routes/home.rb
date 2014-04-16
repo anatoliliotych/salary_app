@@ -19,12 +19,10 @@ module Sinatra
 
           select_user = lambda do
             session[:name] = URI.decode(params[:name])
-            redirect to('/')
           end
 
           select_period = lambda do
             session[:period] = params[:period]
-            redirect to('/')
           end
 
           send_complain = lambda do
