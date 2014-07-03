@@ -9,5 +9,3 @@
           - @periods.each do |period|
             - selected = session[:period] == period
             %option{value: "#{period}", selected: selected }=translate_period(period)
-      .col-xs-4.button-pos
-        %button.btn.btn-primary.width-100#set-period{ type: "submit" }='Установить'

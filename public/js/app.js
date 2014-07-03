@@ -2,11 +2,37 @@ $(document).ready(function  () {
   $("#users").chosen(function(){
     allow_single_deselect: true
   });
+
   $("#periods").chosen(function(){
     allow_single_deselect: true
   });
 
+  $('#periods').on('change', function(){
+    period = $('#periods').val();
+    $.ajax({
+      type: "POST",
+      url: '/period',
+      data: {period:period}
+    }).done(function(){
+        //location.reload(true);
+      $('#main').load('/ #user_info')
+      $('#sidebar').load('/ #users')
+    })
+  });
+
+  $('#users').on('change', function(){
+    name = $('#users').val();
+    $.ajax({
+      type: "POST",
+      url: '/user',
+      data: {name:name}
+    }).done(function(){
+      $('#main').load('/ #user_info')
+    })
+  });
+
   $('#complain_form').hide();
+
   $('#complain').click(function() {
     $('#complain_form').toggle();
   });
@@ -34,34 +60,6 @@ $(document).ready(function  () {
     else {
       add_complain_message('Введите сообщение');
     }
-  });
-
-  $('#set-period').click(function(){
-    period = $('#periods').val();
-    disable_button('#set-period')
-    $.ajax({
-      type: "POST",
-      url: '/period',
-      data: {period:period}
-    }).done(function(){
-      location.reload(true);
-    }).always(function(){
-      enable_button('#set-period', 'Установить')
-    })
-  });
-
-  $('#set-user').click(function(){
-    name = $('#users').val();
-    disable_button('#set-user')
-    $.ajax({
-      type: "POST",
-      url: '/user',
-      data: {name:name}
-    }).done(function(){
-      $('#main').load('/ #user_info')
-    }).always(function(){
-      enable_button('#set-user', 'Установить')
-    })
   });
 })
 

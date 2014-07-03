@@ -18,41 +18,37 @@ class Storage
   attr_reader :periods
 
   def initialize
-      @doc = self.class.init_doc
+      @doc = init_doc
       raise 'Strange salary.xls.' unless @doc.sheets.first == 'Employees'
-      @periods = get_periods
-      @data = get_data
+
+      update_users
+      process_data
     rescue => ex
       puts "Roo:Excel has failed with message: #{ex.message}"
       raise "File 'files/salary.xls' has wrong content or doesn't exist."
   end
 
-  def get_periods
+  def periods
     sheets = @doc.sheets.dup - ['Employees']
     sheets.map! { |e| e.gsub('_', ' ') }
     sheets.reverse
   end
 
-  def get_data
-    return @data if @data
-    {}
-  end
-
   def users_by_period(period)
-    return {} unless period
-    @data = get_data
-    return  @data[period] if @data.keys.include?(period)
-    @data[period] = process_period_tab(period)
+    SalaryItem.all(:period => period).map { |item| item.user.russian_name }
   end
 
   def user_info(params)
     name = params[:name]
     period = params[:period]
     return nil unless name || period
-
-    @data = get_data
-    return nil unless @data[period]
-    @data[period][name]
+    user = User.first(:russian_name => name)
+    if user
+      SalaryItem.first(:period => period, :user_id => user.id).attributes.
+        merge(
+          :start_date => user.start_date,
+          :name => user.russian_name)
+    end
   end
 
   def set_period(period)
@@ -68,39 +64,65 @@ class Storage
   end
 
   def process_period_tab(period)
-    users = {}
     set_period(period)
 
     1.upto(get_tab_row_count) do |line|
       name = get_cell_value(line, 2)
+      next unless name
       next unless name.is_a?(String)
       next if ['QA', 'C++', 'Flash/Actionscript', 'Graphic Design'].include?(name)
-      if name
-        users[name] = {}
-        username = users[name]
-        username[:name] = name
-        username[:start_date] = get_cell_value(line, 3)
+      user = User.first(:russian_name => name.strip)
+      next unless user
+      item_params = {
+        :user_id => user.id,
+        :period => period
+      }
+      WORKING_HOURS.each { |k, v| item_params[k] = get_cell_value(line, v).to_i || 0 }
+      ILNESSES.each { |k, v| item_params[k] = get_cell_value(line, v).to_i }
 
-        WORKING_HOURS.each { |k, v| username[k] = get_cell_value(line, v).to_i || 0 }
-        ILNESSES.each { |k, v| username[k] = get_cell_value(line, v).to_i }
-      end
+      SalaryItem.create(item_params)
     end
-    users
   end
-  class << self
-    def init_doc
-      file_path = Settings.common.path
-      raise 'File salary.xls doesn\'t exist' unless file_path
-      Roo::Excel.new(file_path)
-    end
 
-    def get_russian_name(name)
-      doc = init_doc
-      doc.default_sheet = "Employees"
-      6.upto(doc.last_row) do |line|
-        e_name = doc.cell(line, 3)
-        return doc.cell(line, 2) if e_name == name
+  def init_doc
+    file_path = Settings.common.path
+    raise 'File salary.xls doesn\'t exist' unless file_path
+    Roo::Excel.new(file_path)
+  end
+
+  def self.get_russian_name(name)
+    user = User.first(:name => name)
+    user.russian_name if user
+  end
+
+  def process_data
+    periods.each do |period|
+      unless db_periods.include?(period)
+        process_period_tab(period)
       end
     end
+  end
+
+  def db_periods
+    repository(:default).adapter.select('SELECT distinct period FROM salary_items')
+  end
+
+  def update_users
+    @doc.default_sheet = "Employees"
+    6.upto(@doc.last_row) do |line|
+      name = @doc.cell(line, 3)
+      next unless name
+      next if ['QA', 'C++', 'Flash/Actionscript', 'Graphic Design'].include?(name)
+      name = name.strip
+      user = User.first(:name => name)
+      unless user
+        User.create(
+          :name => name,
+          :russian_name => @doc.cell(line, 2).strip,
+          :start_date => @doc.cell(line, 4)
+        )
+      end
+    end
+    true
   end
 end

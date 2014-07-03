@@ -6,8 +6,6 @@
     .row-fluid
       .col-xs-8
         %select.chosen-select-deselect#users{ name: "name", "data-placeholder" => "Выберите сотрудника"}
-          - @users.keys.sort.each do |name|
+          - @users.sort.each do |name|
             - selected = @selected_user && @selected_user[:name] == name
             %option{value: "#{URI.encode(name)}", selected: selected }=name
-      .col-xs-4.button-pos
-        %button.btn.btn-primary.width-100#set-user{ type: "submit" }='Показать'

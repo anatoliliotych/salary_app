@@ -25,7 +25,7 @@ module Sinatra
            end_of_work_year.unshift(Time.now.year + 1)
         end
         time = Time.new(*end_of_work_year) - Time.new(*current_date)
-        vac_cur_year.to_i > 64 && (time / 3600 * 24 * 30) <= 3
+        vac_cur_year.to_i > 64 && (time / (3600 * 24 * 30)) <= 3
       end
     end
   end

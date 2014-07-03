@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module Sinatra
   module App
     module Routing
@@ -27,7 +29,7 @@ module Sinatra
               puts ex.message
               puts ex.backtrace
               session[:user_login] = auth_settings[:user]
-              flash[:error] = 'Что-то пошло не так! Попробуйте снова!'
+              flash[:error] = "Что-то пошло не так! Попробуйте снова!"
               redirect back
             end
           end

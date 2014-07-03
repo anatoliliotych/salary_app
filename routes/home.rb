@@ -7,8 +7,8 @@ module Sinatra
 
           show_home = lambda do
             authorize!
-            @@storage      ||= Storage.new
-            @periods       = @@storage.periods
+            @@storage    ||= Storage.new
+            @periods       = @@storage.db_periods
             session[:period] ||= @periods.first
             session[:name] ||= session[:current_user]
             @users         = @@storage.users_by_period(session[:period])

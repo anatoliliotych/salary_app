@@ -13,6 +13,10 @@ gem "sinatra-i18n"
 gem "i18n"
 gem 'unicorn'
 gem 'pony'
+gem 'sqlite3'
+gem 'dm-sqlite-adapter'
+gem 'dm-migrations'
+gem 'dm-types'
 
 group :test do
   gem 'capistrano'
