@@ -7,7 +7,7 @@ stdout_path "#{root}/log/unicorn.stdout.log"
 
 listen "#{root}/tmp/sockets/unicorn.sock"
 worker_processes 2
-timeout 30
+timeout 120
 
 if GC.respond_to?(:copy_on_write_friendly=)
   GC.copy_on_write_friendly = true
