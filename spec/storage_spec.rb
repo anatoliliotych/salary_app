@@ -49,6 +49,7 @@ describe Storage do
 
     it 'should return {} when called without period' do
       allow(@doc).to receive(:sheets) { ['Employees'] }
+      allow(@doc).to receive(:default_sheet) { ['Employees'] }
       @storage = Storage.new
       expect(@storage.users_by_period(nil).is_a?(Hash)).to be_true
       expect(@storage.users_by_period(nil).empty?).to be_true

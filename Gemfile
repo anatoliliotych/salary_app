@@ -20,6 +20,7 @@ gem 'dm-types'
 
 group :test do
   gem 'capistrano'
+  gem 'capistrano-bundler'
   gem "cucumber"
   gem "cucumber-sinatra"
   gem "capybara"

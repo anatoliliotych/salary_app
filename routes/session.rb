@@ -21,7 +21,7 @@ module Sinatra
               if user
                 download_salary_file(auth_settings)
                 session[:user] = auth_settings[:user]
-                session[:current_user] = Storage.get_russian_name(user)
+                session[:current_user] = Storage.get_russian_name(user) || user
                 session[:period]     = nil
               end
               redirect to('/')

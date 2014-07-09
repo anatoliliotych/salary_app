@@ -45,7 +45,7 @@ describe LdapUser do
     end
 
     it 'raises an exception' do
-      -> (){ LdapUser.find({ user: 'name', pass: 'pass' }) }.
+      ->(){ LdapUser.find({ user: 'name', pass: 'pass' }) }.
         should raise_error "NET::LDAP connection has failed."
     end
   end
